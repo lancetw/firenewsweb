@@ -1,6 +1,5 @@
 <template>
-  <hr class="ui divider" />
-  <div class="ui text menu">
+  <div class="ui text four item menu">
     <div class="ui item toggle checkbox">
       <input type="checkbox" id="checkbox0" v-model="showTime">
       <label for="checkbox0">顯示時間</label>
@@ -38,8 +37,12 @@
           <br/><a v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
         </li>
       </ol>
+    </div>
   </div>
-</div>
+  <small class="ui horizontal inverted divider header">
+    <i class="tag icon"></i>
+    lancetw&lt;at&gt;gmail.com, 2016
+  </small>
 </template>
 
 <script>
