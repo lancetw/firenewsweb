@@ -31,10 +31,8 @@
           <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="showTime">{{ item.timeText }}</span>
           <br/><a v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.link }}" target="_blank">{{ item.link }}</a>
         </li>
-      </ol>
       <br />
-      <span v-if="!loading">{{ today }} 消防新聞（續）</span>
-      <ol>
+      <p v-if="!loading">{{ today }} 消防新聞（續）</p>
         <li v-for="item in items2 | orderBy 'time'">
           <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="showTime">{{ item.timeText }}</span>
           <br/><a v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
@@ -56,10 +54,8 @@
           <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="showTime">{{ item.timeText }}</span>
           <br/><a v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.link }}" target="_blank">{{ item.link }}</a>
         </li>
-      </ol>
-      <br />
-      <span v-if="!loading">{{ nextday }} 消防新聞（續）</span>
-      <ol>
+        <br />
+        <p v-if="!loading">{{ today }} 消防新聞（續）</p>
         <li v-for="item in items4 | orderBy 'time'">
           <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="showTime">{{ item.timeText }}</span>
           <br/><a v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
