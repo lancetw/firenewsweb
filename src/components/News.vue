@@ -208,6 +208,7 @@ h2 {
   padding: 0;
   line-height: auto;
   text-align: left;
+  list-style: none;
 }
 
 #news ol li {
