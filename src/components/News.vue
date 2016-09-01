@@ -26,7 +26,7 @@
         <div class="ui large loader"></div>
       </div>
       <p v-if="!loading">{{ today }} 消防新聞</p>
-      <ol>
+      <ul>
         <li v-for="item in items1 | orderBy 'time'">
           <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}</span>
           <br/><a v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.link }}" target="_blank">{{ item.link }}</a>
@@ -37,7 +37,7 @@
           <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}</span>
           <br/><a v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
         </li>
-      </ol>
+      </ul>
     </div>
   </div>
 
@@ -50,7 +50,7 @@
       </div>
       <p v-if="!loading">{{ nextday }} 消防新聞</p>
       <span v-if="items3.length == 0">待搜集</span>
-      <ol>
+      <ul>
         <li v-for="item in items3 | orderBy 'time'">
           <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}</span>
           <br/><a v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.link }}" target="_blank">{{ item.link }}</a>
@@ -61,7 +61,7 @@
           <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}</span>
           <br/><a v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
         </li>
-      </ol>
+      </ul>
     </div>
   </div>
 
@@ -73,12 +73,12 @@
         <div class="ui large loader"></div>
       </div>
       <span v-if="items5.length == 0">今日無相關新聞</span>
-      <ol>
+      <ul>
         <li v-for="item in items5 | orderBy 'time'">
           <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}</span>
           <br/><a v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
         </li>
-      </ol>
+      </ul>
     </div>
   </div>
 
@@ -90,12 +90,12 @@
         <div class="ui large loader"></div>
       </div>
       <span v-if="items6.length == 0">今日無相關新聞</span>
-      <ol>
+      <ul>
         <li v-for="item in items6 | orderBy 'time'">
           <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}</span>
           <br/><a v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
         </li>
-      </ol>
+      </ul>
     </div>
   </div>
 
@@ -203,7 +203,7 @@ h2 {
   text-align: left;
 }
 
-#news ol {
+#news ul {
   margin: 0;
   padding: 0;
   line-height: auto;
@@ -211,20 +211,20 @@ h2 {
   list-style: none;
 }
 
-#news ol li {
+#news ul li {
   margin: 0;
   padding: 0;
   line-height: auto;
 }
 
-#news ol li a {
+#news ul li a {
   margin: 0;
   padding: 0;
   color: blue;
   text-decoration: underline;
 }
 
-#news ol li a.hide-link-underline {
+#news ul li a.hide-link-underline {
   text-decoration: none;
 }
 
