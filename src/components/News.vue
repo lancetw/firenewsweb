@@ -152,7 +152,7 @@ export default {
     this.loading3 = true
     this.$http.get(serverAddress + '/api/news/v1/typhon').then((response) => {
       const rdata = sortBy(response.data.news, (o) => { return o.time })
-      this.items5 = pickBy(rdata, (o) => {
+      this.items6 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().hour(0).minute(0), moment().hour(23).minute(59), 'minute', '[)')
       })
 
