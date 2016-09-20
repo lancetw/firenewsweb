@@ -29,7 +29,7 @@ html {
 body {
   font-family: “微軟正黑體”;
   text-align: center;
-  background: #dca;
+  background: rgba(221,204,173,0.57);
 }
 
 h1.inverted, small.inverted {
