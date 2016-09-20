@@ -141,7 +141,7 @@ export default {
     this.$http.get(serverAddress + '/api/news/v1/city').then((response) => {
       const rdata = sortBy(response.data.news, (o) => { return o.time })
       this.items5 = pickBy(rdata, (o) => {
-        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().hour(17).minute(55), 'minute', '[)')
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
 
       this.loading2 = false
@@ -153,7 +153,7 @@ export default {
     this.$http.get(serverAddress + '/api/news/v1/typhon').then((response) => {
       const rdata = sortBy(response.data.news, (o) => { return o.time })
       this.items6 = pickBy(rdata, (o) => {
-        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().hour(17).minute(55), 'minute', '[)')
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
 
       this.loading3 = false
