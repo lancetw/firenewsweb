@@ -99,6 +99,23 @@
     </div>
   </div>
 
+  <div class="ui horizontal divider header">今日地震相關新聞</div>
+
+  <div class="ui piled segment fixed">
+    <div id="news">
+      <div v-if="loading4" class="ui active inverted dimmer">
+        <div class="ui large loader"></div>
+      </div>
+      <span v-if="items7.length == 0">今日無相關新聞</span>
+      <ol>
+        <li v-for="item in items7 | orderBy 'time'">
+          <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
+          <a class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
+        </li>
+      </ol>
+    </div>
+  </div>
+
   <small class="ui horizontal inverted divider header">
     lancetw&lt;at&gt;gmail.com, 2016
   </small>
@@ -160,12 +177,25 @@ export default {
     }, (errors) => {
       console.log(errors)
     })
+
+    this.loading4 = true
+    this.$http.get(serverAddress + '/api/news/v1/earthquake').then((response) => {
+      const rdata = sortBy(response.data.news, (o) => { return o.time })
+      this.items7 = pickBy(rdata, (o) => {
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
+      })
+
+      this.loading4 = false
+    }, (errors) => {
+      console.log(errors)
+    })
   },
   data () {
     return {
       loading: false,
       loading2: false,
       loading3: false,
+      loading4: false,
       hideTime: false,
       hideLinkUnderline: false,
       hideShortUrl: false,
@@ -177,7 +207,8 @@ export default {
       items3: [],
       items4: [],
       items5: [],
-      items6: []
+      items6: [],
+      items7: []
     }
   }
 }
