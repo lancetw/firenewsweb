@@ -263,7 +263,7 @@ h2 {
 }
 
 #news ol li a.focus {
-  color: black !important;
+  color: black;
 }
 
 #news ol li a.shortlink {
@@ -271,7 +271,7 @@ h2 {
 }
 
 #news ol li a.shortlink.focus {
-  color: blue !important;
+  color: blue;
 }
 
 #news ol li a.hide-link-underline {
