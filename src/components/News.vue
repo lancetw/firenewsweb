@@ -268,7 +268,7 @@ h2 {
 }
 
 #news ol li a.shortlink {
-  display: table-cell;
+
 }
 
 #news ol li a.shortlink.focus {
