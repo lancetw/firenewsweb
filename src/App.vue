@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <h1 class="ui header inverted">勤務派遣科 新聞資訊彙整</h1>
-    <small class="ui horizontal inverted divider header">
-      version 1.0
+    <small class="ui inverted header">
+      version 2.0 β
     </small>
     <news></news>
   </div>
@@ -29,10 +29,11 @@ html {
 body {
   font-family: “微軟正黑體”;
   text-align: center;
-  background: rgba(221,204,173,0.57);
+  background: rgba(221,204,173,0.2);
 }
 
 h1.inverted, small.inverted {
+  color: rgba(255,248,200,1.00) !important;
   text-shadow: 0 0 2px #333;
 }
 
