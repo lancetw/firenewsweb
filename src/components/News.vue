@@ -245,7 +245,7 @@ h2 {
 }
 
 #news ol li {
-  color: #eee;
+  color: #aaa;
   margin: 0;
   padding: 0;
   line-height: auto;
@@ -259,7 +259,7 @@ h2 {
 #news ol li a {
   margin: 0;
   padding: 0;
-  color: #eee;
+  color: #aaa;
   text-decoration: underline;
   font-weight: normal;
 }
