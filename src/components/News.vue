@@ -249,6 +249,7 @@ h2 {
   margin: 0;
   padding: 0;
   line-height: auto;
+  font-weight: normal;
 }
 
 #news ol li.focus {
@@ -260,6 +261,7 @@ h2 {
   padding: 0;
   color: #eee;
   text-decoration: underline;
+  font-weight: normal;
 }
 
 #news ol li a.focus {
@@ -268,6 +270,7 @@ h2 {
 
 #news ol li a.shortlink {
   display: table;
+  font-weight: normal;
 }
 
 #news ol li a.shortlink.focus {
