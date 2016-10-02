@@ -242,7 +242,6 @@ h2 {
   padding: 0;
   line-height: auto;
   text-align: left;
-  display: table;
 }
 
 #news ol li {
@@ -268,7 +267,7 @@ h2 {
 }
 
 #news ol li a.shortlink {
-
+  display: table;
 }
 
 #news ol li a.shortlink.focus {
