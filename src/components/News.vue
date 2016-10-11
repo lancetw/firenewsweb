@@ -18,6 +18,23 @@
     </div>
   </div>
 
+  <div class="ui horizontal divider header">今日本局相關新聞</div>
+
+  <div class="ui piled segment fixed">
+    <div id="news">
+      <div v-if="loading5" class="ui active inverted dimmer">
+        <div class="ui large loader"></div>
+      </div>
+      <span v-if="items8.length == 0">今日無相關新聞</span>
+      <ol>
+        <li v-bind:class="{'focus': item.status}" v-for="item in items8 | orderBy 'time'">
+          <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
+          <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
+        </li>
+      </ol>
+    </div>
+  </div>
+
   <div class="ui horizontal divider header">今天的消防新聞</div>
 
   <div class="ui piled segment fixed">
@@ -59,23 +76,6 @@
         <br />
         <p v-if="!loading">{{ nextday }} 消防新聞（續）</p>
         <li v-bind:class="{'focus': item.status}" v-for="item in items4 | orderBy 'time'">
-          <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
-          <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
-        </li>
-      </ol>
-    </div>
-  </div>
-
-  <div class="ui horizontal divider header">今日本局相關新聞</div>
-
-  <div class="ui piled segment fixed">
-    <div id="news">
-      <div v-if="loading5" class="ui active inverted dimmer">
-        <div class="ui large loader"></div>
-      </div>
-      <span v-if="items8.length == 0">今日無相關新聞</span>
-      <ol>
-        <li v-bind:class="{'focus': item.status}" v-for="item in items8 | orderBy 'time'">
           <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
           <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
         </li>
