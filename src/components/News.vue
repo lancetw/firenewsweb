@@ -26,6 +26,7 @@
         <div class="ui large loader"></div>
       </div>
       <p v-if="!loading">{{ today }} 消防新聞</p>
+      <span v-if="items1.length == 0">待搜集</span>
       <ol>
         <li v-bind:class="{'focus': item.status}" v-bind:item="item" v-for="item in items1 | orderBy 'time'">
           <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
@@ -58,6 +59,23 @@
         <br />
         <p v-if="!loading">{{ nextday }} 消防新聞（續）</p>
         <li v-bind:class="{'focus': item.status}" v-for="item in items4 | orderBy 'time'">
+          <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
+          <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="ui horizontal divider header">今日本局相關新聞</div>
+
+  <div class="ui piled segment fixed">
+    <div id="news">
+      <div v-if="loading5" class="ui active inverted dimmer">
+        <div class="ui large loader"></div>
+      </div>
+      <span v-if="items8.length == 0">今日無相關新聞</span>
+      <ol>
+        <li v-bind:class="{'focus': item.status}" v-for="item in items8 | orderBy 'time'">
           <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
           <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
         </li>
@@ -157,9 +175,10 @@ export default {
     this.loading2 = true
     this.$http.get(serverAddress + '/api/news/v1/city').then((response) => {
       const rdata = sortBy(response.data.news, (o) => { return o.time })
-      this.items5 = pickBy(rdata, (o) => {
+      const items5 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
+      if (!isEmpty(items5)) this.items5 = items5
 
       this.loading2 = false
     }, (errors) => {
@@ -169,9 +188,10 @@ export default {
     this.loading3 = true
     this.$http.get(serverAddress + '/api/news/v1/typhon').then((response) => {
       const rdata = sortBy(response.data.news, (o) => { return o.time })
-      this.items6 = pickBy(rdata, (o) => {
+      const items6 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
+      if (!isEmpty(items6)) this.items6 = items6
 
       this.loading3 = false
     }, (errors) => {
@@ -181,11 +201,25 @@ export default {
     this.loading4 = true
     this.$http.get(serverAddress + '/api/news/v1/earthquake').then((response) => {
       const rdata = sortBy(response.data.news, (o) => { return o.time })
-      this.items7 = pickBy(rdata, (o) => {
+      const items7 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
+      if (!isEmpty(items7)) this.items7 = items7
 
       this.loading4 = false
+    }, (errors) => {
+      console.log(errors)
+    })
+
+    this.loading5 = true
+    this.$http.get(serverAddress + '/api/news/v1/hcfd').then((response) => {
+      const rdata = sortBy(response.data.news, (o) => { return o.time })
+      const items8 = pickBy(rdata, (o) => {
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
+      })
+      if (!isEmpty(items8)) this.items8 = items8
+
+      this.loading5 = false
     }, (errors) => {
       console.log(errors)
     })
@@ -199,6 +233,7 @@ export default {
       loading2: false,
       loading3: false,
       loading4: false,
+      loading5: false,
       hideTime: false,
       hideLinkUnderline: false,
       hideShortUrl: false,
@@ -211,7 +246,8 @@ export default {
       items4: [],
       items5: [],
       items6: [],
-      items7: []
+      items7: [],
+      items8: []
     }
   }
 }

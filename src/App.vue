@@ -2,7 +2,7 @@
   <div id="app">
     <h1 class="ui header inverted">勤務派遣科 新聞資訊彙整</h1>
     <small class="ui inverted header">
-      version 2.0 β
+      version 3.0 β
     </small>
     <news></news>
   </div>
