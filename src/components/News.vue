@@ -6,7 +6,7 @@
     </div>
   </div>
 
-  <div class="ui horizontal divider header">今日本局相關新聞</div>
+  <div class="ui horizontal divider header">近期本局相關新聞</div>
 
   <div class="ui piled segment fixed">
     <div id="news">
