@@ -8,7 +8,7 @@
 
   <div class="ui horizontal divider header">近期本局相關新聞</div>
 
-  <div class="ui piled segment fixed">
+  <div class="ui segment fixed">
     <div id="news">
       <div v-if="loading5" class="ui active inverted dimmer">
         <div class="ui large loader"></div>
@@ -29,7 +29,7 @@
 
   <div class="ui horizontal divider header">今天的消防新聞</div>
 
-  <div class="ui piled segment fixed">
+  <div class="ui segment fixed">
     <div id="news">
       <div v-if="loading" class="ui active inverted dimmer">
         <div class="ui large loader"></div>
@@ -61,7 +61,7 @@
 
   <div class="ui horizontal divider header">明天的消防新聞</div>
 
-  <div class="ui piled segment fixed">
+  <div class="ui segment fixed">
     <div id="news">
       <div v-if="loading" class="ui active inverted dimmer">
         <div class="ui large loader"></div>
@@ -93,7 +93,7 @@
 
   <div class="ui horizontal divider header">今日新竹市相關新聞</div>
 
-  <div class="ui piled segment fixed">
+  <div class="ui segment fixed">
     <div id="news">
       <div v-if="loading2" class="ui active inverted dimmer">
         <div class="ui large loader"></div>
@@ -114,7 +114,7 @@
 
   <div class="ui horizontal divider header">今日低氣壓（颱風）相關新聞</div>
 
-  <div class="ui piled segment fixed">
+  <div class="ui segment fixed">
     <div id="news">
       <div v-if="loading3" class="ui active inverted dimmer">
         <div class="ui large loader"></div>
@@ -135,7 +135,7 @@
 
   <div class="ui horizontal divider header">今日地震相關新聞</div>
 
-  <div class="ui piled segment fixed">
+  <div class="ui segment fixed">
     <div id="news">
       <div v-if="loading4" class="ui active inverted dimmer">
         <div class="ui large loader"></div>
@@ -289,6 +289,11 @@ h2 {
   color: #000;
 }
 
+.ui.divider.header, .ui.item.toggle.checkbox label {
+  color: rgba(251,251,251,1) !important;
+  text-shadow: 0 0 2px #333;
+}
+
 #news p {
   text-align: left;
 }
@@ -337,8 +342,13 @@ h2 {
   text-decoration: none;
 }
 
-.ui.piled.segment.fixed {
+.ui.segment.fixed {
   padding: 40px 100px;
+  background-color: rgba(255,255,255,0.82);
+}
+
+.ui.inverted.dimmer {
+  opacity: 0.3;
 }
 
 .ui.item.toggle.checkbox label {

@@ -2,7 +2,7 @@
   <div id="app">
     <h1 class="ui header inverted">新竹市消防局 勤務派遣科 新聞資訊彙整</h1>
     <small class="ui inverted header">
-      version 3.4 β
+      version 4.0 β
     </small>
     <news></news>
   </div>
@@ -30,6 +30,14 @@ body {
   font-family: "微軟正黑體";
   text-align: center;
   background: rgba(190,180,150,0.1);
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url(https://source.unsplash.com/collection/388793/minimal-travel);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 h1.ui.inverted, small.ui.inverted {
