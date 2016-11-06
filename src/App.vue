@@ -35,7 +35,7 @@ body {
       rgba(0, 0, 0, 0.05),
       rgba(0, 0, 0, 0.7)
     ),
-    url(https://source.unsplash.com/collection/388793/minimal-travel);
+    url(https://source.unsplash.com/collection/382232/the-inner-dimension);
   background-size: cover;
   background-attachment: fixed;
 }
