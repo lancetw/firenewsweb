@@ -2,7 +2,7 @@
   <div id="app">
     <h1 class="ui header inverted">新竹市消防局 勤務派遣科 新聞資訊彙整</h1>
     <small class="ui inverted header">
-      version 3.3 β
+      version 3.4 β
     </small>
     <news></news>
   </div>
@@ -27,13 +27,14 @@ html {
 }
 
 body {
-  font-family: “微軟正黑體”;
+  font-family: "微軟正黑體";
   text-align: center;
-  background: rgba(221,204,173,0.2);
+  background: rgba(190,180,150,0.1);
 }
 
-h1.inverted, small.inverted {
-  color: rgba(255,248,200,1.00) !important;
+h1.ui.inverted, small.ui.inverted {
+  font-family: "微軟正黑體" !important;
+  color: rgba(251,251,251,1) !important;
   text-shadow: 0 0 2px #333;
 }
 
