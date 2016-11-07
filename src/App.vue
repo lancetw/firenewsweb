@@ -2,7 +2,7 @@
   <div id="app">
     <h1 class="ui header inverted">新竹市消防局 勤務派遣科 新聞資訊彙整</h1>
     <small class="ui inverted header">
-      version 4.0 β
+      version 4.1 β
     </small>
     <news></news>
   </div>
@@ -32,8 +32,8 @@ body {
   background: rgba(190,180,150,0.1);
   background:
     linear-gradient(
-      rgba(0, 0, 0, 0.08),
-      rgba(0, 0, 0, 0.6)
+      rgba(0, 0, 0, 0.01),
+      rgba(0, 0, 0, 0.5)
     ),
     url(https://source.unsplash.com/collection/367159/earth-and-nature);
   background-size: cover;
