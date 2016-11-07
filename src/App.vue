@@ -32,8 +32,8 @@ body {
   background: rgba(190,180,150,0.1);
   background:
     linear-gradient(
-      rgba(0, 0, 0, 0.12),
-      rgba(0, 0, 0, 0.68)
+      rgba(0, 0, 0, 0.08),
+      rgba(0, 0, 0, 0.6)
     ),
     url(https://source.unsplash.com/collection/367159/earth-and-nature);
   background-size: cover;

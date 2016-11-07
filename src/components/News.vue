@@ -289,6 +289,10 @@ h2 {
   color: #000;
 }
 
+.ui.divider.header {
+  font-size: 1.2rem;
+}
+
 .ui.divider.header, .ui.item.toggle.checkbox label {
   color: rgba(251,251,251,1) !important;
   text-shadow: 0 0 2px #333;
@@ -344,7 +348,8 @@ h2 {
 
 .ui.segment.fixed {
   padding: 40px 100px;
-  background-color: rgba(255,255,255,0.82);
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
 }
 
 .ui.inverted.dimmer {
