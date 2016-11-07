@@ -35,7 +35,7 @@ body {
       rgba(0, 0, 0, 0.05),
       rgba(0, 0, 0, 0.7)
     ),
-    url(https://source.unsplash.com/collection/386327/evoke);
+    url(https://source.unsplash.com/collection/228211/the-path);
   background-size: cover;
   background-attachment: fixed;
 }
