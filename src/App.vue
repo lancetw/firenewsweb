@@ -32,10 +32,10 @@ body {
   background: rgba(190,180,150,0.1);
   background:
     linear-gradient(
-      rgba(0, 0, 0, 0.05),
-      rgba(0, 0, 0, 0.7)
+      rgba(0, 0, 0, 0.12),
+      rgba(0, 0, 0, 0.68)
     ),
-    url(https://source.unsplash.com/collection/228211/the-path);
+    url(https://source.unsplash.com/collection/367159/earth-and-nature);
   background-size: cover;
   background-attachment: fixed;
 }
