@@ -235,7 +235,7 @@ export default {
     this.$http.get(serverAddress + '/api/news/v1/hcfd').then((response) => {
       const rdata = sortBy(response.data.news, (o) => { return o.time })
       const items8 = pickBy(rdata, (o) => {
-        return moment(o.time).isBetween(moment().subtract(2, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
       if (!isEmpty(items8)) this.items8 = items8
 
