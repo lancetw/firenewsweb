@@ -2,7 +2,7 @@
   <div id="app">
     <h1 class="ui header inverted">新竹市消防局 勤務派遣科 新聞資訊彙整</h1>
     <small class="ui inverted header">
-      version 4.1 β
+      version 5.0
     </small>
     <news></news>
   </div>
@@ -35,7 +35,7 @@ body {
       rgba(0, 0, 0, 0.01),
       rgba(0, 0, 0, 0.5)
     ),
-    url(https://source.unsplash.com/collection/502/blue-hour);
+    url(https://source.unsplash.com/collection/183254/urban-essentials);
   background-size: cover;
   background-attachment: fixed;
 }
