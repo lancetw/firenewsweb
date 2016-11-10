@@ -35,7 +35,7 @@ body {
       rgba(0, 0, 0, 0.01),
       rgba(0, 0, 0, 0.5)
     ),
-    url(https://source.unsplash.com/collection/367159/earth-and-nature);
+    url(https://source.unsplash.com/collection/502/blue-hour);
   background-size: cover;
   background-attachment: fixed;
 }
