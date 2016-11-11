@@ -290,7 +290,7 @@ h2 {
 
 #news {
   font-family: "標楷體", DFKai-SB, BiauKai, STKaiti;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   text-align: center;
   color: #000;
 }
