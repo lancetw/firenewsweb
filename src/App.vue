@@ -2,7 +2,7 @@
   <div id="app">
     <h1 class="ui header inverted">新竹市消防局 勤務派遣科 新聞資訊彙整</h1>
     <small class="ui inverted header">
-      version 5.0
+      version 5.1
     </small>
     <news></news>
   </div>
