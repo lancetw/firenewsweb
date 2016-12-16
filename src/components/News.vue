@@ -11,6 +11,25 @@
   </div>
 
   <div v-show="!showBg">
+    <div v-show="items9.length != 0 || items10.length != 0 || items11.length != 0">
+      <div class="ui horizontal divider header">近期 Facebook 輿情</div>
+      <div class="ui segment fixed">
+        <div id="fb">
+          <ul>
+            <li v-for="item in items9 | orderBy 'time'">
+              <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
+            </li>
+            <li v-for="item in items10 | orderBy 'time'">
+              <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
+            </li>
+            <li v-for="item in items11 | orderBy 'time'">
+              <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <div class="ui horizontal divider header">近期本局相關新聞</div>
 
     <div class="ui segment fixed">
@@ -249,6 +268,50 @@ export default {
     }, (errors) => {
       console.log(errors)
     })
+
+    const keywords = '火警|火災|火光|火球|大火|失火|救火|燒車|火花|爆炸|濃煙|大煙|黑煙|消防|燃燒|火燒|救護車'
+
+    // 新竹大小事
+    this.loading6 = true
+    this.$http.get(serverAddress + '/api/facebook/v1/feed/1507207486163325?include=' + keywords).then((response) => {
+      const rdata = sortBy(response.data.fb, (o) => { return o.time })
+      const items9 = pickBy(rdata, (o) => {
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
+      })
+      if (!isEmpty(items9)) this.items9 = items9
+
+      this.loading6 = false
+    }, (errors) => {
+      console.log(errors)
+    })
+
+    // 新竹人新竹事
+    this.loading7 = true
+    this.$http.get(serverAddress + '/api/facebook/v1/feed/123595078051928?include=' + keywords).then((response) => {
+      const rdata = sortBy(response.data.fb, (o) => { return o.time })
+      const items10 = pickBy(rdata, (o) => {
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
+      })
+      if (!isEmpty(items10)) this.items10 = items10
+
+      this.loading7 = false
+    }, (errors) => {
+      console.log(errors)
+    })
+
+    // 新竹爆料公社
+    this.loading8 = true
+    this.$http.get(serverAddress + '/api/facebook/v1/feed/SeeZhubei?include=' + keywords).then((response) => {
+      const rdata = sortBy(response.data.fb, (o) => { return o.time })
+      const items11 = pickBy(rdata, (o) => {
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
+      })
+      if (!isEmpty(items11)) this.items11 = items11
+
+      this.loading8 = false
+    }, (errors) => {
+      console.log(errors)
+    })
   },
   data () {
     return {
@@ -260,6 +323,9 @@ export default {
       loading3: false,
       loading4: false,
       loading5: false,
+      loading6: false,
+      loading7: false,
+      loading8: false,
       hideTime: false,
       hideLinkUnderline: false,
       hideShortUrl: false,
@@ -273,7 +339,10 @@ export default {
       items5: [],
       items6: [],
       items7: [],
-      items8: []
+      items8: [],
+      items9: [],
+      items10: [],
+      items11: []
     }
   }
 }
@@ -349,6 +418,41 @@ h2 {
 }
 
 #news ol li a.hide-link-underline {
+  text-decoration: none;
+}
+
+#fb {
+  font-family: "標楷體", DFKai-SB, BiauKai, STKaiti;
+  font-size: 1.35rem;
+  text-align: center;
+  color: #000;
+}
+
+#fb p {
+  text-align: left;
+}
+
+#fb ul {
+  margin: -20px;
+  padding: 0;
+  line-height: auto;
+  text-align: left;
+}
+
+#fb ul li {
+  margin: 0;
+  padding: 0;
+  line-height: auto;
+  font-weight: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#fb ul li a {
+  margin: 0;
+  padding: 0;
+  color: #000;
   text-decoration: none;
 }
 
