@@ -304,7 +304,7 @@ export default {
 
     // 新竹爆料公社
     this.loading8 = true
-    this.$http.get(serverAddress + '/api/facebook/v1/feed/SeeZhubei?include=' + keywords0).then((response) => {
+    this.$http.get(serverAddress + '/api/facebook/v1/feed/1695176847369554?include=' + keywords0).then((response) => {
       const rdata = sortBy(response.data.fb, (o) => { return o.time })
       const items11 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
