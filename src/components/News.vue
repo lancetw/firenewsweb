@@ -264,9 +264,7 @@ export default {
     })
 
     const keywords0 = '火警|火災|火光|火球|大火|失火|救火|起火|燒車|火花|爆炸|濃煙|大煙|黑煙|消防|燃燒|火燒|滅火|救護車'
-    /*
-    const keywords1 = '竹市.*火警|火警.*竹市|竹市.*火災|火災.*竹市|竹市.*火光|火光.*竹市|竹市.*火球|火球.*竹市|竹市.*大火|大火.*竹市|竹市.*失火|失火.*竹市|竹市.*救火|救火.竹市|竹市.*起火|起火.*竹市|竹市.*燒車|燒車.*竹市|竹市.*火花|火花.*竹市|竹市.*爆炸|爆炸.*竹市|竹市.*濃煙|濃煙.*竹市|竹市.*大煙|大煙.*竹市|竹市.*黑煙|黑煙.*竹市|竹市.*消防|消防.*竹市|竹市.*燃燒|燃燒.*竹市|竹市.*火燒|火燒.*竹市|竹市.*救護車|救護車.*竹市|竹市.*車禍|車禍.*竹市'
-    */
+    const keywords1 = '竹市.*火警|火警.*竹市|竹市.*火災|火災.*竹市|竹市.*火光|火光.*竹市|竹市.*火球|火球.*竹市|竹市.*大火|大火.*竹市|竹市.*失火|失火.*竹市|竹市.*救火|救火.竹市|竹市.*起火|起火.*竹市|竹市.*燒車|燒車.*竹市|竹市.*火花|火花.*竹市|竹市.*爆炸|爆炸.*竹市|竹市.*濃煙|濃煙.*竹市|竹市.*大煙|大煙.*竹市|竹市.*黑煙|黑煙.*竹市|竹市.*消防|消防.*竹市|竹市.*燃燒|燃燒.*竹市|竹市.*火燒|火燒.*竹市|竹市.*救護車|救護車.*竹市|竹市.*車禍|車禍.*竹市|風城'
 
     // 新竹大小事
     this.loading6 = true
@@ -309,6 +307,20 @@ export default {
     }, (errors) => {
       console.log(errors)
     })
+
+    // 靠北消防
+    this.loading9 = true
+    this.$http.get(serverAddress + '/api/facebook/v1/feed/374097612788175?include=' + keywords1).then((response) => {
+      const rdata = sortBy(response.data.fb, (o) => { return o.time })
+      const items12 = pickBy(rdata, (o) => {
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
+      })
+      if (!isEmpty(items12)) this.items9 = Object.assign({}, this.items9, items12)
+
+      this.loading9 = false
+    }, (errors) => {
+      console.log(errors)
+    })
   },
   data () {
     return {
@@ -323,6 +335,7 @@ export default {
       loading6: false,
       loading7: false,
       loading8: false,
+      loading9: false,
       hideTime: false,
       hideLinkUnderline: false,
       hideShortUrl: false,
