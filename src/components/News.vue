@@ -17,13 +17,13 @@
         <div id="fb">
           <ul>
             <li v-for="item in items9 | orderBy 'time'">
-              <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
+              {{ item.timeText }} <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
             </li>
             <li v-for="item in items10 | orderBy 'time'">
-              <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
+              {{ item.timeText }} <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
             </li>
             <li v-for="item in items11 | orderBy 'time'">
-              <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
+              {{ item.timeText }} <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
             </li>
           </ul>
         </div>
@@ -269,11 +269,12 @@ export default {
       console.log(errors)
     })
 
-    const keywords = '火警|火災|火光|火球|大火|失火|救火|燒車|火花|爆炸|濃煙|大煙|黑煙|消防|燃燒|火燒|救護車'
+    const keywords0 = '火警|火災|火光|火球|大火|失火|救火|起火|燒車|火花|爆炸|濃煙|大煙|黑煙|消防|燃燒|火燒|救護車|車禍'
+    const keywords1 = '竹市.*火警|火警.*竹市|竹市.*火災|火災.*竹市|竹市.*火光|火光.*竹市|竹市.*火球|火球.*竹市|竹市.*大火|大火.*竹市|竹市.*失火|失火.*竹市|竹市.*救火|救火.竹市|竹市.*起火|起火.*竹市|竹市.*燒車|燒車.*竹市|竹市.*火花|火花.*竹市|竹市.*爆炸|爆炸.*竹市|竹市.*濃煙|濃煙.*竹市|竹市.*大煙|大煙.*竹市|竹市.*黑煙|黑煙.*竹市|竹市.*消防|消防.*竹市|竹市.*燃燒|燃燒.*竹市|竹市.*火燒|火燒.*竹市|竹市.*救護車|救護車.*竹市|竹市.*車禍|車禍.*竹市'
 
     // 新竹大小事
     this.loading6 = true
-    this.$http.get(serverAddress + '/api/facebook/v1/feed/1507207486163325?include=' + keywords).then((response) => {
+    this.$http.get(serverAddress + '/api/facebook/v1/feed/1507207486163325?include=' + keywords0).then((response) => {
       const rdata = sortBy(response.data.fb, (o) => { return o.time })
       const items9 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
@@ -287,7 +288,7 @@ export default {
 
     // 新竹人新竹事
     this.loading7 = true
-    this.$http.get(serverAddress + '/api/facebook/v1/feed/123595078051928?include=' + keywords).then((response) => {
+    this.$http.get(serverAddress + '/api/facebook/v1/feed/123595078051928?include=' + keywords0).then((response) => {
       const rdata = sortBy(response.data.fb, (o) => { return o.time })
       const items10 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
@@ -301,7 +302,7 @@ export default {
 
     // 新竹爆料公社
     this.loading8 = true
-    this.$http.get(serverAddress + '/api/facebook/v1/feed/SeeZhubei?include=' + keywords).then((response) => {
+    this.$http.get(serverAddress + '/api/facebook/v1/feed/SeeZhubei?include=' + keywords0).then((response) => {
       const rdata = sortBy(response.data.fb, (o) => { return o.time })
       const items11 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
