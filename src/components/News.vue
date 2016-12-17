@@ -12,7 +12,7 @@
 
   <div v-show="!showBg">
     <div v-show="items9.length != 0">
-      <div class="ui horizontal divider header">近期 Facebook 輿情</div>
+      <div class="ui horizontal divider header">近期 Facebook 公開群組輿情</div>
       <div class="ui segment fixed">
         <div id="fb">
           <ul>
