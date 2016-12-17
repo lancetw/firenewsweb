@@ -273,7 +273,7 @@ export default {
     this.$http.get(serverAddress + '/api/facebook/v1/feed/1507207486163325?include=' + keywords0).then((response) => {
       const rdata = sortBy(response.data.fb, (o) => { return o.time })
       const items9 = pickBy(rdata, (o) => {
-        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
       if (!isEmpty(items9)) this.items9 = Object.assign({}, this.items9, items9)
 
@@ -287,7 +287,7 @@ export default {
     this.$http.get(serverAddress + '/api/facebook/v1/feed/123595078051928?include=' + keywords0).then((response) => {
       const rdata = sortBy(response.data.fb, (o) => { return o.time })
       const items10 = pickBy(rdata, (o) => {
-        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
       if (!isEmpty(items10)) this.items9 = Object.assign({}, this.items9, items10)
 
@@ -301,7 +301,7 @@ export default {
     this.$http.get(serverAddress + '/api/facebook/v1/feed/1695176847369554?include=' + keywords0).then((response) => {
       const rdata = sortBy(response.data.fb, (o) => { return o.time })
       const items11 = pickBy(rdata, (o) => {
-        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
       if (!isEmpty(items11)) this.items9 = Object.assign({}, this.items9, items11)
 
