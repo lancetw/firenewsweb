@@ -449,7 +449,6 @@ h2 {
   padding: 0;
   text-decoration: none;
   color: #333 !important;
-  text-shadow: 0 0 2px #666;
 }
 
 .ui.segment.fixed {
