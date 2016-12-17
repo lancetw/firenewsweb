@@ -263,7 +263,7 @@ export default {
       console.log(errors)
     })
 
-    const keywords0 = '火警|火災|火光|火球|大火|失火|救火|起火|燒車|火花|爆炸|濃煙|大煙|黑煙|消防|燃燒|火燒|救護車|車禍'
+    const keywords0 = '火警|火災|火光|火球|大火|失火|救火|起火|燒車|火花|爆炸|濃煙|大煙|黑煙|消防|燃燒|火燒|滅火|救護車'
     /*
     const keywords1 = '竹市.*火警|火警.*竹市|竹市.*火災|火災.*竹市|竹市.*火光|火光.*竹市|竹市.*火球|火球.*竹市|竹市.*大火|大火.*竹市|竹市.*失火|失火.*竹市|竹市.*救火|救火.竹市|竹市.*起火|起火.*竹市|竹市.*燒車|燒車.*竹市|竹市.*火花|火花.*竹市|竹市.*爆炸|爆炸.*竹市|竹市.*濃煙|濃煙.*竹市|竹市.*大煙|大煙.*竹市|竹市.*黑煙|黑煙.*竹市|竹市.*消防|消防.*竹市|竹市.*燃燒|燃燒.*竹市|竹市.*火燒|火燒.*竹市|竹市.*救護車|救護車.*竹市|竹市.*車禍|車禍.*竹市'
     */
@@ -289,7 +289,7 @@ export default {
       const items10 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items9)) this.items9 = this.items9.concat(items9)
+      if (!isEmpty(items9)) this.items9 = this.items9.concat(items10)
 
       this.loading7 = false
     }, (errors) => {
@@ -303,7 +303,7 @@ export default {
       const items11 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items9)) this.items9 = this.items9.concat(items9)
+      if (!isEmpty(items9)) this.items9 = this.items9.concat(items11)
 
       this.loading8 = false
     }, (errors) => {
