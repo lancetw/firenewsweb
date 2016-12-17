@@ -13,7 +13,7 @@
   <div v-show="!showBg">
     <div v-show="items9.length != 0">
       <div class="ui horizontal divider header">近期 Facebook 公開群組輿情</div>
-      <div class="ui segment fixed">
+      <div class="ui raised segment fixed">
         <div id="fb">
           <ul>
             <li v-for="item in items9 | orderBy 'time'">
@@ -447,8 +447,9 @@ h2 {
 #fb ul li a {
   margin: 0;
   padding: 0;
-  color: #000;
   text-decoration: none;
+  color: #333 !important;
+  text-shadow: 0 0 2px #666;
 }
 
 .ui.segment.fixed {
