@@ -281,7 +281,7 @@ export default {
       const items9 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items9)) this.items9 = items9
+      if (!isEmpty(items9)) this.items9 = this.items9.concat(items9)
 
       this.loading6 = false
     }, (errors) => {
@@ -295,7 +295,7 @@ export default {
       const items10 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items10)) this.items10 = items10
+      if (!isEmpty(items9)) this.items9 = this.items9.concat(items9)
 
       this.loading7 = false
     }, (errors) => {
@@ -309,7 +309,7 @@ export default {
       const items11 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items11)) this.items11 = items11
+      if (!isEmpty(items9)) this.items9 = this.items9.concat(items9)
 
       this.loading8 = false
     }, (errors) => {
