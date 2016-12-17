@@ -11,7 +11,7 @@
   </div>
 
   <div v-show="!showBg">
-    <div v-show="items9.length != 0 || items10.length != 0 || items11.length != 0">
+    <div v-show="items9.length != 0">
       <div class="ui horizontal divider header">近期 Facebook 輿情</div>
       <div class="ui segment fixed">
         <div id="fb">
@@ -275,7 +275,7 @@ export default {
       const items9 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items9)) this.items9 = this.items9.concat(items9)
+      if (!isEmpty(items9)) this.items9 = Object.assign({}, this.items9, items9)
 
       this.loading6 = false
     }, (errors) => {
@@ -289,7 +289,7 @@ export default {
       const items10 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items10)) this.items9 = this.items9.concat(items10)
+      if (!isEmpty(items10)) this.items9 = Object.assign({}, this.items9, items10)
 
       this.loading7 = false
     }, (errors) => {
@@ -303,7 +303,7 @@ export default {
       const items11 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items11)) this.items9 = this.items9.concat(items11)
+      if (!isEmpty(items11)) this.items9 = Object.assign({}, this.items9, items11)
 
       this.loading8 = false
     }, (errors) => {
@@ -337,9 +337,7 @@ export default {
       items6: [],
       items7: [],
       items8: [],
-      items9: [],
-      items10: [],
-      items11: []
+      items9: []
     }
   }
 }
@@ -430,7 +428,7 @@ h2 {
 }
 
 #fb ul {
-  margin: -20px;
+  margin: 0;
   padding: 0;
   line-height: auto;
   text-align: left;
