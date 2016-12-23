@@ -190,22 +190,22 @@ export default {
     this.loading = true
     this.$http.get(serverAddress + '/api/news/v1/main').then((response) => {
       const rdata = sortBy(response.data.news, (o) => { return o.time })
-      const items = pickBy(rdata, (o) => {
+      const items1 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items1)) this.items1 = items
-      const items = pickBy(rdata, (o) => {
+      if (!isEmpty(items1)) this.items1 = items1
+      const items2 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().hour(5).minute(55), moment().hour(17).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items2)) this.items2 = items
-      const items = pickBy(rdata, (o) => {
+      if (!isEmpty(items2)) this.items2 = items2
+      const items3 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items3)) this.items3 = items
-      const items = pickBy(rdata, (o) => {
+      if (!isEmpty(items3)) this.items3 = items3
+      const items4 = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().add(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(17).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items4)) this.items4 = items
+      if (!isEmpty(items4)) this.items4 = items4
 
       this.loading = false
     }, (errors) => {
