@@ -190,22 +190,22 @@ export default {
     this.loading = true
     this.$http.get(serverAddress + '/api/news/v1/main').then((response) => {
       const rdata = sortBy(response.data.news, (o) => { return o.time })
-      const items1 = pickBy(rdata, (o) => {
+      const items = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items1)) this.items1 = items1
-      const items2 = pickBy(rdata, (o) => {
+      if (!isEmpty(items1)) this.items1 = items
+      const items = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().hour(5).minute(55), moment().hour(17).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items2)) this.items2 = items2
-      const items3 = pickBy(rdata, (o) => {
+      if (!isEmpty(items2)) this.items2 = items
+      const items = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items3)) this.items3 = items3
-      const items4 = pickBy(rdata, (o) => {
+      if (!isEmpty(items3)) this.items3 = items
+      const items = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().add(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(17).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items4)) this.items4 = items4
+      if (!isEmpty(items4)) this.items4 = items
 
       this.loading = false
     }, (errors) => {
@@ -215,10 +215,10 @@ export default {
     this.loading2 = true
     this.$http.get(serverAddress + '/api/news/v1/city').then((response) => {
       const rdata = sortBy(response.data.news, (o) => { return o.time })
-      const items5 = pickBy(rdata, (o) => {
+      const items = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items5)) this.items5 = items5
+      if (!isEmpty(items5)) this.items5 = items
 
       this.loading2 = false
     }, (errors) => {
@@ -228,10 +228,10 @@ export default {
     this.loading3 = true
     this.$http.get(serverAddress + '/api/news/v1/typhon').then((response) => {
       const rdata = sortBy(response.data.news, (o) => { return o.time })
-      const items6 = pickBy(rdata, (o) => {
+      const items = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items6)) this.items6 = items6
+      if (!isEmpty(items6)) this.items6 = items
 
       this.loading3 = false
     }, (errors) => {
@@ -241,10 +241,10 @@ export default {
     this.loading4 = true
     this.$http.get(serverAddress + '/api/news/v1/earthquake').then((response) => {
       const rdata = sortBy(response.data.news, (o) => { return o.time })
-      const items7 = pickBy(rdata, (o) => {
+      const items = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items7)) this.items7 = items7
+      if (!isEmpty(items7)) this.items7 = items
 
       this.loading4 = false
     }, (errors) => {
@@ -254,10 +254,10 @@ export default {
     this.loading5 = true
     this.$http.get(serverAddress + '/api/news/v1/hcfd').then((response) => {
       const rdata = sortBy(response.data.news, (o) => { return o.time })
-      const items8 = pickBy(rdata, (o) => {
+      const items = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(5).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items8)) this.items8 = items8
+      if (!isEmpty(items8)) this.items8 = items
 
       this.loading5 = false
     }, (errors) => {
@@ -268,57 +268,56 @@ export default {
     const keywords1 = '竹市.*火警|火警.*竹市|竹市.*火災|火災.*竹市|竹市.*火光|火光.*竹市|竹市.*火球|火球.*竹市|竹市.*大火|大火.*竹市|竹市.*失火|失火.*竹市|竹市.*救火|救火.竹市|竹市.*起火|起火.*竹市|竹市.*打火|打火.*竹市|竹市.*燒車|燒車.*竹市|竹市.*瓦斯味|瓦斯味.*竹市|竹市.*爆炸|爆炸.*竹市|竹市.*濃煙|濃煙.*竹市|竹市.*大煙|大煙.*竹市|竹市.*黑煙|黑煙.*竹市|竹市.*消防局|消防局.*竹市|竹市.*消防隊|消防隊.*竹市|竹市.*消防人員|消防人員.*竹市|竹市.*消防車|消防車.*竹市|竹市.*燃燒|燃燒.*竹市|竹市.*救災|救災.*竹市|竹市.*火場|火場.*竹市|竹市.*救護車|救護車.*竹市|竹市.*火勢|火勢.*竹市|風城.*消防|消防.*風城'
 
     // 新竹大小事
-    this.loading6 = true
     this.$http.get(serverAddress + '/api/facebook/v1/feed/1507207486163325?include=' + keywords0).then((response) => {
       const rdata = sortBy(response.data.fb, (o) => { return o.time })
-      const items9 = pickBy(rdata, (o) => {
+      const items = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items9)) this.items9 = Object.assign({}, this.items9, items9)
-
-      this.loading6 = false
+      if (!isEmpty(items)) this.items9 = Object.assign({}, this.items9, items)
     }, (errors) => {
       console.log(errors)
     })
 
     // 新竹人新竹事
-    this.loading7 = true
     this.$http.get(serverAddress + '/api/facebook/v1/feed/123595078051928?include=' + keywords0).then((response) => {
       const rdata = sortBy(response.data.fb, (o) => { return o.time })
-      const items10 = pickBy(rdata, (o) => {
+      const items = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items10)) this.items9 = Object.assign({}, this.items9, items10)
-
-      this.loading7 = false
+      if (!isEmpty(items)) this.items9 = Object.assign({}, this.items9, items)
     }, (errors) => {
       console.log(errors)
     })
 
     // 新竹爆料公社
-    this.loading8 = true
     this.$http.get(serverAddress + '/api/facebook/v1/feed/1695176847369554?include=' + keywords0).then((response) => {
       const rdata = sortBy(response.data.fb, (o) => { return o.time })
-      const items11 = pickBy(rdata, (o) => {
+      const items = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items11)) this.items9 = Object.assign({}, this.items9, items11)
-
-      this.loading8 = false
+      if (!isEmpty(items)) this.items9 = Object.assign({}, this.items9, items)
     }, (errors) => {
       console.log(errors)
     })
 
     // 靠北消防
-    this.loading9 = true
     this.$http.get(serverAddress + '/api/facebook/v1/feed/374097612788175?include=' + keywords1).then((response) => {
       const rdata = sortBy(response.data.fb, (o) => { return o.time })
-      const items12 = pickBy(rdata, (o) => {
+      const items = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
       })
-      if (!isEmpty(items12)) this.items9 = Object.assign({}, this.items9, items12)
+      if (!isEmpty(items)) this.items9 = Object.assign({}, this.items9, items)
+    }, (errors) => {
+      console.log(errors)
+    })
 
-      this.loading9 = false
+    // 爆料公社粉絲頁
+    this.$http.get(serverAddress + '/api/facebook/v1/feed/162608724089621?include=' + keywords1).then((response) => {
+      const rdata = sortBy(response.data.fb, (o) => { return o.time })
+      const items = pickBy(rdata, (o) => {
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
+      })
+      if (!isEmpty(items)) this.items9 = Object.assign({}, this.items9, items)
     }, (errors) => {
       console.log(errors)
     })
@@ -333,10 +332,6 @@ export default {
       loading3: false,
       loading4: false,
       loading5: false,
-      loading6: false,
-      loading7: false,
-      loading8: false,
-      loading9: false,
       hideTime: false,
       hideLinkUnderline: false,
       hideShortUrl: false,
