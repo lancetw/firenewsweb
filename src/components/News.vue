@@ -313,7 +313,7 @@ export default {
     })
 
     // 爆料公社粉絲頁
-    this.$http.get(serverAddress + '/api/facebook/v1/feed/162608724089621?include=' + keywords1 + '|' + keywords2).then((response) => {
+    this.$http.get(serverAddress + '/api/facebook/v1/feed/162608724089621?type=pg&include=' + keywords1 + '|' + keywords2).then((response) => {
       const rdata = sortBy(response.data.fb, (o) => { return o.time })
       const items = pickBy(rdata, (o) => {
         return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
