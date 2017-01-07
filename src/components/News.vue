@@ -2,11 +2,11 @@
   <div class="ui text four item menu">
     <div class="ui item toggle checkbox">
       <input type="checkbox" id="checkbox0" v-model="showAll">
-      <label for="checkbox0">顯示所有新聞</label>
+      <label for="checkbox0">全部來源</label>
     </div>
     <div class="ui item toggle checkbox">
       <input type="checkbox" id="checkbox1" v-model="showBg">
-      <label for="checkbox1">顯示背景圖</label>
+      <label for="checkbox1">切換顯示</label>
     </div>
   </div>
 
@@ -175,7 +175,7 @@
   </div>
 
   <small class="ui horizontal inverted divider header">
-    lancetw&lt;at&gt;gmail.com, 2016
+    lancetw&lt;at&gt;gmail.com, 2016~2017
   </small>
 </template>
 
@@ -390,7 +390,7 @@ h2 {
 }
 
 #news ol li {
-  color: #aaa;
+  color: #666;
   margin: 0;
   padding: 0;
   line-height: auto;
@@ -404,7 +404,7 @@ h2 {
 #news ol li a {
   margin: 0;
   padding: 0;
-  color: #aaa;
+  color: #666;
   text-decoration: underline;
   font-weight: normal;
 }
