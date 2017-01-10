@@ -165,12 +165,12 @@
         <div id="fb">
           <ul>
             <li v-for="item in items9 | orderBy 'time'">
-              <span class="ui label">{{ item.timeText }}</span><span class="ui red tag label">[{{ item.source }}]</span><a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
+              <span class="ui label">{{ item.timeText }}</span><span class="ui  teal label">{{ item.source }}</span><a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
             </li>
           </ul>
           <ul>
             <li v-for="item in items10 | orderBy 'time'">
-              <span class="ui label">{{ item.timeText }}</span><span class="ui red tag label">[{{ item.source }}]</span><a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.title }}</span>
+              <span class="ui label">{{ item.timeText }}</span><span class="ui  teal label">{{ item.source }}</span><a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.title }}</span>
             </li>
           </ul>
         </div>
