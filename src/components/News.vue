@@ -169,6 +169,13 @@
             </li>
           </ul>
         </div>
+        <div id="feed">
+          <ul>
+            <li v-for="item in items10 | orderBy 'time'">
+              {{ item.timeText }} <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.title }}</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -333,6 +340,17 @@ export default {
     }, (errors) => {
       console.log(errors)
     })
+
+    // 非公開社團 atom
+    this.$http.get(serverAddress + '/api/blogger/v1/feed/default?include=' + keywords1 + '|' + keywords2).then((response) => {
+      const rdata = sortBy(response.data.feed, (o) => { return o.time })
+      const items = pickBy(rdata, (o) => {
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
+      })
+      if (!isEmpty(items)) this.items10 = Object.assign({}, this.items10, items)
+    }, (errors) => {
+      console.log(errors)
+    })
   },
   data () {
     return {
@@ -358,7 +376,8 @@ export default {
       items6: [],
       items7: [],
       items8: [],
-      items9: []
+      items9: [],
+      items10: []
     }
   }
 }
