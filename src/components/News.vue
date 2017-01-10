@@ -165,12 +165,12 @@
         <div id="fb">
           <ul>
             <li v-for="item in items9 | orderBy 'time'">
-              {{ item.timeText }} [{{ item.source }}]<a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
+              {{ item.timeText }} [{{ item.source }}] <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
             </li>
           </ul>
           <ul>
             <li v-for="item in items10 | orderBy 'time'">
-              {{ item.timeText }} [{{ item.source }}]<a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.title }}</span>
+              {{ item.timeText }} [{{ item.source }}] <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.title }}</span>
             </li>
           </ul>
         </div>
