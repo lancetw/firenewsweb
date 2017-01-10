@@ -322,6 +322,17 @@ export default {
     }, (errors) => {
       console.log(errors)
     })
+
+    // 看見新竹粉絲頁
+    this.$http.get(serverAddress + '/api/facebook/v1/feed/Seehsinzhu?type=pg&include=' + keywords1 + '|' + keywords2).then((response) => {
+      const rdata = sortBy(response.data.fb, (o) => { return o.time })
+      const items = pickBy(rdata, (o) => {
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
+      })
+      if (!isEmpty(items)) this.items9 = Object.assign({}, this.items9, items)
+    }, (errors) => {
+      console.log(errors)
+    })
   },
   data () {
     return {
