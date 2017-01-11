@@ -16,8 +16,8 @@
       <div class="ui large loader"></div>
       <div class="ui horizontal divider header">中央氣象局地震報告</div>
       <div class="ui segment mini" v-for="item in items11 | orderBy 'time'">
-        <div class="ui red message overflow large">{{ item.description }}</div>
-        <a class="shortlink" href="{{ item.link }}" target="_blank"><img  class="ui fluid image" src="{{ item.title }}" alt="{{ item.description }}" style="border: 1px solid #888" /></a>
+        <div class="ui red message overflow large"><a href="{{ item.link }}" target="_blank">{{ item.description }}</a></div>
+        <img  class="ui fluid image" src="{{ item.title }}" alt="{{ item.description }}" style="border: 1px solid #888" />
       </div>
     </div>
 
@@ -281,7 +281,7 @@ export default {
     this.$http.get(serverAddress + '/api/news/v1/ncdr').then((response) => {
       const rdata = sortBy(response.data.news, (o) => { return o.time })
       const items = pickBy(rdata, (o) => {
-        return moment(o.time).isBetween(moment().subtract(1.5, 'hour'), moment().add(1.5, 'hour'), 'minute', '[)')
+        return moment(o.time).isBetween(moment().subtract(2.5, 'hour'), moment().add(0.5, 'hour'), 'minute', '[)')
       })
       if (!isEmpty(items)) this.items11 = items
 
@@ -548,4 +548,8 @@ h2 {
   overflow : hidden;
   text-overflow : ellipsis;
   white-space : nowrap;
+}
+
+.ui.message > a {
+  color: rgba(242, 78, 106, 1.00) !important;
 }
