@@ -497,7 +497,7 @@ h2 {
 
 #fb ul li {
   margin: 0;
-  padding: 2px 0 5px 0;
+  padding: 5px 0 5px 0;
   line-height: auto;
   font-weight: normal;
   white-space: nowrap;
