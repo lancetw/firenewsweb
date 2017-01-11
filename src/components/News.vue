@@ -17,7 +17,7 @@
       <div class="ui horizontal divider header">中央氣象局地震報告</div>
       <div class="ui segment mini" v-for="item in items11 | orderBy 'time'">
         <div class="ui red message overflow large"><a href="{{ item.link }}" target="_blank">{{ item.description }}</a></div>
-        <img  class="ui fluid image" src="{{ item.title }}" alt="{{ item.description }}" style="border: 1px solid #888" />
+        <img v-if="item.title" class="ui fluid image" v-bind:src="item.title" alt="{{ item.description }}" style="border: 1px solid #888" />
       </div>
     </div>
 
