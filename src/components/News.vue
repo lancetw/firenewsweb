@@ -11,6 +11,16 @@
   </div>
 
   <div v-show="!showBg">
+
+    <div v-show="items11.length != 0">
+      <div class="ui large loader"></div>
+      <div class="ui horizontal divider header">中央氣象局地震報告</div>
+      <div class="ui segment mini" v-for="item in items11 | orderBy 'time'">
+        <div class="ui red message overflow large">{{ item.description }}</div>
+        <a class="shortlink" href="{{ item.link }}" target="_blank"><img  class="ui fluid image" src="{{ item.title }}" alt="{{ item.description }}" style="border: 1px solid #888" /></a>
+      </div>
+    </div>
+
     <div class="ui horizontal divider header">近期本局相關新聞</div>
 
     <div class="ui segment fixed">
@@ -160,27 +170,25 @@
     </div>
 
     <div v-show="items9.length != 0">
+      <div class="ui large loader"></div>
       <div class="ui horizontal divider header">近期 Facebook 公開群組輿情</div>
-      <div class="ui raised segment fixed">
-        <div id="fb">
-          <ul>
-            <li v-for="item in items9 | orderBy 'time'">
-              {{ item.timeText }} [{{ item.source }}] <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
-            </li>
-          </ul>
-          <ul>
-            <li v-for="item in items10 | orderBy 'time'">
-              {{ item.timeText }} [{{ item.source }}] <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.title }}</span>
-            </li>
-          </ul>
-        </div>
+      <div id="fb" class="ui segment mini">
+        <ul>
+          <li v-for="item in items9 | orderBy 'time'">
+            {{ item.timeText }} [{{ item.source }}] <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
+          </li>
+        </ul>
+        <ul>
+          <li v-for="item in items10 | orderBy 'time'">
+            {{ item.timeText }} [{{ item.source }}] <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.title }}</span>
+          </li>
+        </ul>
       </div>
     </div>
-
   </div>
 
   <small class="ui horizontal inverted divider header">
-    lancetw&lt;at&gt;gmail.com, 2016~2017
+    lancetw&lt;at&gt;gmail.com, 2016 ~ 2017
   </small>
 </template>
 
@@ -265,6 +273,19 @@ export default {
       if (!isEmpty(items)) this.items8 = items
 
       this.loading5 = false
+    }, (errors) => {
+      console.log(errors)
+    })
+
+    this.loading6 = true
+    this.$http.get(serverAddress + '/api/news/v1/ncdr').then((response) => {
+      const rdata = sortBy(response.data.news, (o) => { return o.time })
+      const items = pickBy(rdata, (o) => {
+        return moment(o.time).isBetween(moment().subtract(1.5, 'hour'), moment().add(1.5, 'hour'), 'minute', '[)')
+      })
+      if (!isEmpty(items)) this.items11 = items
+
+      this.loading6 = false
     }, (errors) => {
       console.log(errors)
     })
@@ -360,6 +381,7 @@ export default {
       loading3: false,
       loading4: false,
       loading5: false,
+      loading6: false,
       hideTime: false,
       hideLinkUnderline: false,
       hideShortUrl: false,
@@ -375,7 +397,8 @@ export default {
       items7: [],
       items8: [],
       items9: [],
-      items10: []
+      items10: [],
+      items11: []
     }
   }
 }
@@ -474,12 +497,13 @@ h2 {
 
 #fb ul li {
   margin: 0;
-  padding: 0;
+  padding: 2px 0 5px 0;
   line-height: auto;
   font-weight: normal;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  border-bottom: 1px dashed #111;
 }
 
 #fb ul li a {
@@ -491,6 +515,12 @@ h2 {
 
 .ui.segment.fixed {
   padding: 40px 100px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+}
+
+.ui.segment.mini {
+  padding: 10px 10px;
   background: rgba(255, 255, 255, 0.8);
   border: none;
 }
@@ -513,4 +543,9 @@ h2 {
   text-shadow: 0 0 2px #999;
 }
 
-</style>
+.ui.message.overflow {
+  font-size: 1.1rem;
+  overflow : hidden;
+  text-overflow : ellipsis;
+  white-space : nowrap;
+}
