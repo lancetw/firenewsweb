@@ -35,7 +35,7 @@ body {
       rgba(0, 0, 0, 0.01),
       rgba(0, 0, 0, 0.5)
     ),
-    url(https://source.unsplash.com/collection/162468/earth-from-above);
+    url(https://source.unsplash.com/collection/206106/ruins);
   background-size: cover;
   background-attachment: fixed;
 }
