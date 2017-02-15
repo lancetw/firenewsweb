@@ -46,11 +46,11 @@
 
     <div class="ui segment fixed">
       <div id="news">
-        <div v-if="loading" class="ui active inverted dimmer">
+        <div v-if="loading1" class="ui active inverted dimmer">
           <div class="ui large loader"></div>
         </div>
-        <p v-if="!loading">{{ today }} 消防新聞</p>
-        <span v-if="!loading && items1.length == 0">待搜集</span>
+        <p v-if="!loading1">{{ today }} 消防新聞</p>
+        <span v-if="!loading1 && items1.length == 0">待搜集</span>
         <ol>
           <li v-if="!showAll&&item.status" v-bind:class="{'focus': item.status}" v-bind:item="item" v-for="item in items1 | orderBy 'time'">
             <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
@@ -61,7 +61,7 @@
             <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.link }}" target="_blank">{{ item.link }}</a>
           </li>
         <br />
-        <p v-if="!loading">{{ today }} 消防新聞（續）</p>
+        <p v-if="!loading1">{{ today }} 消防新聞（續）</p>
           <li v-if="!showAll&&item.status" v-bind:class="{'focus': item.status}" v-for="item in items2 | orderBy 'time'">
             <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
             <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
@@ -78,11 +78,11 @@
 
     <div class="ui segment fixed">
       <div id="news">
-        <div v-if="loading" class="ui active inverted dimmer">
+        <div v-if="loading1" class="ui active inverted dimmer">
           <div class="ui large loader"></div>
         </div>
-        <p v-if="!loading">{{ nextday }} 消防新聞</p>
-        <span v-if="!loading && items3.length == 0">待搜集</span>
+        <p v-if="!loading1">{{ nextday }} 消防新聞</p>
+        <span v-if="!loading1 && items3.length == 0">待搜集</span>
         <ol>
           <li v-if="!showAll&&item.status" v-bind:class="{'focus': item.status}" v-for="item in items3 | orderBy 'time'">
             <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
@@ -93,7 +93,7 @@
             <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.link }}" target="_blank">{{ item.link }}</a>
           </li>
           <br />
-          <p v-if="!loading">{{ nextday }} 消防新聞（續）</p>
+          <p v-if="!loading1">{{ nextday }} 消防新聞（續）</p>
           <li v-if="!showAll&&item.status" v-bind:class="{'focus': item.status}" v-for="item in items4 | orderBy 'time'">
             <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
             <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
@@ -127,20 +127,20 @@
       </div>
     </div>
 
-    <div class="ui horizontal divider header">今日低氣壓（颱風）相關新聞</div>
+    <div class="ui horizontal divider header">今日乾旱相關新聞</div>
 
     <div class="ui segment fixed">
       <div id="news">
-        <div v-if="loading3" class="ui active inverted dimmer">
+        <div v-if="loading7" class="ui active inverted dimmer">
           <div class="ui large loader"></div>
         </div>
-        <span v-if="!loading3 && items6.length == 0">今日無相關新聞</span>
+        <span v-if="!loading7 && items12.length == 0">今日無相關新聞</span>
         <ol>
-          <li v-if="!showAll&&item.status" v-bind:class="{'focus': item.status}" v-for="item in items6 | orderBy 'time'">
+          <li v-if="!showAll&&item.status" v-bind:class="{'focus': item.status}" v-for="item in items12 | orderBy 'time'">
             <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
             <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
           </li>
-          <li v-if="showAll" v-bind:class="{'focus': item.status}" v-for="item in items6 | orderBy 'time'">
+          <li v-if="showAll" v-bind:class="{'focus': item.status}" v-for="item in items7 | orderBy 'time'">
             <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
             <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
           </li>
@@ -169,6 +169,27 @@
       </div>
     </div>
 
+    <div class="ui horizontal divider header">今日低氣壓（颱風）相關新聞</div>
+
+    <div class="ui segment fixed">
+      <div id="news">
+        <div v-if="loading3" class="ui active inverted dimmer">
+          <div class="ui large loader"></div>
+        </div>
+        <span v-if="!loading3 && items6.length == 0">今日無相關新聞</span>
+        <ol>
+          <li v-if="!showAll&&item.status" v-bind:class="{'focus': item.status}" v-for="item in items6 | orderBy 'time'">
+            <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
+            <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
+          </li>
+          <li v-if="showAll" v-bind:class="{'focus': item.status}" v-for="item in items6 | orderBy 'time'">
+            <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
+            <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+
     <div v-show="items9.length != 0">
       <div class="ui large loader"></div>
       <div class="ui horizontal divider header">近期 Facebook 公開群組輿情</div>
@@ -188,7 +209,7 @@
   </div>
 
   <small class="ui horizontal inverted divider header">
-    lancetw&lt;at&gt;gmail.com, 2016 ~ 2017
+    lancetw&lt;at&gt;gmail.com, 2016 summer ~ 2017 spring
   </small>
 </template>
 
@@ -290,6 +311,19 @@ export default {
       console.log(errors)
     })
 
+    this.loading7 = true
+    this.$http.get(serverAddress + '/api/news/v1/drought').then((response) => {
+      const rdata = sortBy(response.data.news, (o) => { return o.time })
+      const items = pickBy(rdata, (o) => {
+        return moment(o.time).isBetween(moment().subtract(1, 'day').hour(17).minute(55), moment().add(1, 'day').hour(5).minute(55), 'minute', '[)')
+      })
+      if (!isEmpty(items)) this.items12 = items
+
+      this.loading7 = false
+    }, (errors) => {
+      console.log(errors)
+    })
+
     const keywords0 = '火警|火災|火光|火球|大火|失火|救火|起火|打火|燒車|瓦斯味|濃煙|大煙|黑煙|消防局|消防隊|消防人員|消防車|燃燒|救災|滅火|火場|火勢|救護車|翻覆|受困'
     const keywords1 = '竹市.*火警|火警.*竹市|竹市.*火災|火災.*竹市|竹市.*火光|火光.*竹市|竹市.*火球|火球.*竹市|竹市.*大火|大火.*竹市|竹市.*失火|失火.*竹市|竹市.*救火|救火.竹市|竹市.*起火|起火.*竹市|竹市.*打火|打火.*竹市|竹市.*燒車|燒車.*竹市|竹市.*瓦斯味|瓦斯味.*竹市|竹市.*濃煙|濃煙.*竹市|竹市.*大煙|大煙.*竹市|竹市.*黑煙|黑煙.*竹市|竹市.*消防局|消防局.*竹市|竹市.*消防隊|消防隊.*竹市|竹市.*消防人員|消防人員.*竹市|竹市.*消防車|消防車.*竹市|竹市.*燃燒|燃燒.*竹市|竹市.*救災|救災.*竹市|竹市.*火場|火場.*竹市|竹市.*救護車|救護車.*竹市|竹市.*火勢|火勢.*竹市|風城.*消防|消防.*風城|竹市.*翻覆|翻覆.*竹市|竹市.*受困|受困.*竹市'
     const keywords2 = '新竹.*火警|火警.*新竹|新竹.*火災|火災.*新竹|新竹.*火光|火光.*新竹|新竹.*火球|火球.*新竹|新竹.*大火|大火.*新竹|新竹.*失火|失火.*新竹|新竹.*救火|救火.新竹|新竹.*起火|起火.*新竹|新竹.*打火|打火.*新竹|新竹.*燒車|燒車.*新竹|新竹.*瓦斯味|瓦斯味.*新竹|新竹.*濃煙|濃煙.*新竹|新竹.*大煙|大煙.*新竹|新竹.*黑煙|黑煙.*新竹|新竹.*消防局|消防局.*新竹|新竹.*消防隊|消防隊.*新竹|新竹.*消防人員|消防人員.*新竹|新竹.*消防車|消防車.*新竹|新竹.*燃燒|燃燒.*新竹|新竹.*救災|救災.*新竹|新竹.*火場|火場.*新竹|新竹.*救護車|救護車.*新竹|新竹.*火勢|火勢.*新竹|風城.*消防|消防.*風城|新竹.*翻覆|翻覆.*新竹|新竹.*受困|受困.*新竹'
@@ -376,12 +410,13 @@ export default {
       focusItem: {
         focus: false
       },
-      loading: false,
+      loading1: false,
       loading2: false,
       loading3: false,
       loading4: false,
       loading5: false,
       loading6: false,
+      loading7: false,
       hideTime: false,
       hideLinkUnderline: false,
       hideShortUrl: false,
@@ -398,7 +433,8 @@ export default {
       items8: [],
       items9: [],
       items10: [],
-      items11: []
+      items11: [],
+      items12: []
     }
   }
 }

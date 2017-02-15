@@ -2,7 +2,7 @@
   <div id="app">
     <h1 class="ui header inverted">新竹市消防局 勤務派遣科 輿情資訊彙整</h1>
     <small class="ui inverted header">
-      Version 8.2
+      Version 8.7
     </small>
     <news></news>
   </div>
@@ -35,7 +35,7 @@ body {
       rgba(0, 0, 0, 0.01),
       rgba(0, 0, 0, 0.5)
     ),
-    url(https://source.unsplash.com/collection/206106/ruins);
+    url(https://source.unsplash.com/collection/317099/unsplash-instant-2);
   background-size: cover;
   background-attachment: fixed;
 }
