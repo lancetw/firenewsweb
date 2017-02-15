@@ -21,6 +21,23 @@
       </div>
     </div>
 
+    <div v-show="items9.length != 0">
+      <div class="ui large loader"></div>
+      <div class="ui horizontal divider header">近期 Facebook 公開群組輿情</div>
+      <div id="fb" class="ui segment mini">
+        <ul>
+          <li v-for="item in items9 | orderBy 'time'">
+            {{ item.timeText }} [{{ item.source }}] <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
+          </li>
+        </ul>
+        <ul>
+          <li v-for="item in items10 | orderBy 'time'">
+            {{ item.timeText }} [{{ item.source }}] <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.title }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <div class="ui horizontal divider header">近期本局相關新聞</div>
 
     <div class="ui segment fixed">
@@ -35,28 +52,6 @@
             <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
           </li>
           <li v-if="showAll" v-bind:class="{'focus': item.status}" v-for="item in items8 | orderBy 'time'">
-            <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
-            <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
-          </li>
-        </ol>
-      </div>
-    </div>
-
-
-    <div class="ui horizontal divider header">今日乾旱相關新聞</div>
-
-    <div class="ui segment fixed">
-      <div id="news">
-        <div v-if="loading7" class="ui active inverted dimmer">
-          <div class="ui large loader"></div>
-        </div>
-        <span v-if="!loading7 && items12.length == 0">今日無相關新聞</span>
-        <ol>
-          <li v-if="!showAll&&item.status" v-bind:class="{'focus': item.status}" v-for="item in items12 | orderBy 'time'">
-            <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
-            <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
-          </li>
-          <li v-if="showAll" v-bind:class="{'focus': item.status}" v-for="item in items7 | orderBy 'time'">
             <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
             <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
           </li>
@@ -128,6 +123,27 @@
       </div>
     </div>
 
+    <div class="ui horizontal divider header">今日乾旱相關新聞</div>
+
+    <div class="ui segment fixed">
+      <div id="news">
+        <div v-if="loading7" class="ui active inverted dimmer">
+          <div class="ui large loader"></div>
+        </div>
+        <span v-if="!loading7 && items12.length == 0">今日無相關新聞</span>
+        <ol>
+          <li v-if="!showAll&&item.status" v-bind:class="{'focus': item.status}" v-for="item in items12 | orderBy 'time'">
+            <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
+            <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
+          </li>
+          <li v-if="showAll" v-bind:class="{'focus': item.status}" v-for="item in items7 | orderBy 'time'">
+            <a v-bind:class="{'focus': item.status}" v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title }}</a><span v-if="hideTextLink">{{ item.title }}</span>（{{ item.source }}）<span v-if="!hideTime">{{ item.timeText }}&nbsp;</span>
+            <a v-bind:class="{'focus': item.status}" class="shortlink" v-if="!hideShortUrl" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }"href="{{ item.link }}" target="_blank">{{ item.link }}</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+
     <div class="ui horizontal divider header">今日新竹市相關新聞</div>
 
     <div class="ui segment fixed">
@@ -191,22 +207,6 @@
       </div>
     </div>
 
-    <div v-show="items9.length != 0">
-      <div class="ui large loader"></div>
-      <div class="ui horizontal divider header">近期 Facebook 公開群組輿情</div>
-      <div id="fb" class="ui segment mini">
-        <ul>
-          <li v-for="item in items9 | orderBy 'time'">
-            {{ item.timeText }} [{{ item.source }}] <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.message.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.message }}</span>
-          </li>
-        </ul>
-        <ul>
-          <li v-for="item in items10 | orderBy 'time'">
-            {{ item.timeText }} [{{ item.source }}] <a v-if="!hideTextLink" v-bind:class="{ 'hide-link-underline': hideLinkUnderline }" href="{{ item.originLink }}" target="_blank">{{ item.title.substring(0, 100) }}</a><span v-if="hideTextLink">{{ item.title }}</span>
-          </li>
-        </ul>
-      </div>
-    </div>
   </div>
 
   <small class="ui horizontal inverted divider header">
